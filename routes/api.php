@@ -22,17 +22,7 @@ use App\Http\Controllers\ReadersTicketController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::get('/Autors',[AutorsController::Class,'index']);
-Route::get('/Books',[BooksController::Class,'index']);
-Route::get('/BooksReturn',[BooksReturnController::Class,'index']);
-Route::get('/BooksTabl',[BooksTablController::Class,'index']);
-Route::get('/BooksTableTwo',[BooksTableTwoController::Class,'index']);
-Route::get('/Genre',[GenreController::Class,'index']);
-Route::get('/Readers',[ReadersController::Class,'index']);
-Route::get('/ReadersTicket',[ReadersTicketController::Class,'index']);
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 
 Route::prefix('Autors')->group(function(){
     Route::get('/',[AutorsController::Class,'index']);
@@ -88,4 +78,12 @@ Route::prefix('Readers')->group(function(){
     Route::post('/',[ReadersController::Class,'store']);
     Route::delete('/{id}',[ReadersController::Class,'destroy']);
     Route::put('/',[ReadersController::Class,'update']);
+});
+
+Route::prefix('ReadersTicket')->group(function(){
+    Route::get('/',[ReadersTicketController::Class,'index']);
+    Route::get('/{id}',[ReadersTicketController::Class,'show']);
+    Route::post('/',[ReadersTicketController::Class,'store']);
+    Route::delete('/{id}',[ReadersTicketController::Class,'destroy']);
+    Route::put('/',[ReadersTicketController::Class,'update']);
 });
