@@ -30,21 +30,22 @@ class ReadersTicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created_readerTi = new ReadersTicket;
+        $created_readerTi->reader_id = $request->reader_id;
+        $created_readerTi->address = $request->address;
+        $created_readerTi->number = $request->number;
+        $created_readerTi->books_tabl_id = $request->books_tabl_id;
+        $created_readerTi->save();
+        return $created_readerTi;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(readers_ticket $readers_ticket)
+    public function show($id)
     {
-        $created_catalog = new ReadersTicket;
-        $created_catalog->reader_id = $request->reader_id;
-        $created_catalog->address = $request->address;
-        $created_catalog->number = $request->number;
-        $created_catalog->books_tabl_id = $request->books_tabl_id;
-        $created_catalog->save();
-        return $created_catalog;
+        $reader_Ti = ReadersTicket::find($id);
+        return $reader_Ti;
     }
 
     /**
@@ -60,7 +61,13 @@ class ReadersTicketController extends Controller
      */
     public function update(Request $request, readers_ticket $readers_ticket)
     {
-        //
+        $reader_ti = readers_ticket::find($request->id);
+        $reader_ti->reader_id = $request->reader_id;
+        $reader_ti->address = $request->address;
+        $reader_ti->number = $request->number;
+        $reader_ti->books_tabl_id = $request->books_tabl_id;
+        $reader_ti->save();
+        return $reader_ti;
     }
 
     /**

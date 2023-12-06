@@ -30,26 +30,27 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-        $created_catalog = new Books;
-        $created_catalog->name = $request->name;
-        $created_catalog->autor_id = $request->autor_id;
-        $created_catalog->genre_id = $request->genre_id;
-        $created_catalog->save();
-        return $created_catalog;
+        $created_book = new Books;
+        $created_book->name = $request->name;
+        $created_book->autor_id = $request->autor_id;
+        $created_book->genre_id = $request->genre_id;
+        $created_book->save();
+        return $created_book;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(books $books)
+    public function show($id)
     {
-        //
+        $book = Books::find($id);
+        return $book;
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(books $books)
+    public function edit(Books $books)
     {
         //
     }
@@ -57,15 +58,20 @@ class booksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, books $books)
+    public function update(Request $request, Books $books)
     {
-        //
+        $book = Books::find($request->id);
+        $book->name = $request->name;
+        $book->autor_id = $request->autor_id;
+        $book->genre_id = $request->genre_id;
+        $book->save();
+        return $book;
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(books $books)
+    public function destroy(Books $books)
     {
         Books::destroy($id);
         return true;

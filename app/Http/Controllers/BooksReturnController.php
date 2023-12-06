@@ -30,22 +30,23 @@ class booksReturnController extends Controller
      */
     public function store(Request $request)
     {
-        $created_catalog = new BooksReturn;
-        $created_catalog->name = $request->name;
-        $created_catalog->reader_id = $request->reader_id;
-        $created_catalog->address = $request->address;
-        $created_catalog->number = $request->number;
-        $created_catalog->books_table_two_id = $request->books_table_two_id;
-        $created_catalog->save();
-        return $created_catalog;
+        $created_bookRe = new BooksReturn;
+        $created_bookRe->name = $request->name;
+        $created_bookRe->reader_id = $request->reader_id;
+        $created_bookRe->address = $request->address;
+        $created_bookRe->number = $request->number;
+        $created_bookRe->books_table_two_id = $request->books_table_two_id;
+        $created_bookRe->save();
+        return $created_bookRe;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(books_return $books_return)
+    public function show($id)
     {
-        //
+        $booksreturn = books_return::find($id);
+        return $booksreturn;
     }
 
     /**
@@ -61,7 +62,13 @@ class booksReturnController extends Controller
      */
     public function update(Request $request, books_return $books_return)
     {
-        //
+        $book_re = books_return::find($request->id);
+        $book_re->name = $request->name;
+        $book_re->reader_id = $request->reader_id;
+        $book_re->address = $request->address;
+        $book_re->number = $request->number;
+        $book_re->save();
+        return $book_re;
     }
 
     /**

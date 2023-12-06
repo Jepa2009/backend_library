@@ -30,18 +30,19 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        $created_catalog = new Genre;
-        $created_catalog->name = $request->name;
-        $created_catalog->save();
-        return $created_catalog;
+        $created_genr = new Genre;
+        $created_genr->name = $request->name;
+        $created_genr->save();
+        return $created_genr;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(genre $genre)
+    public function show($id)
     {
-        //
+        $gen = Genre::find($id);
+        return $gen;
     }
 
     /**
@@ -57,7 +58,10 @@ class GenreController extends Controller
      */
     public function update(Request $request, genre $genre)
     {
-        //
+        $genr = genre::find($request->id);
+        $genr->name = $request->name;
+        $genr->save();
+        return $genr;
     }
 
     /**

@@ -30,20 +30,21 @@ class BooksTablController extends Controller
      */
     public function store(Request $request)
     {
-        $created_catalog = new BooksTabl;
-        $created_catalog->name = $request->name;
-        $created_catalog->received_books_id = $request->received_books_id;
-        $created_catalog->autor_id = $request->autor_id;
-        $created_catalog->save();
-        return $created_catalog;
+        $created_bookTa = new BooksTabl;
+        $created_bookTa->name = $request->name;
+        $created_bookTa->received_books_id = $request->received_books_id;
+        $created_bookTa->autor_id = $request->autor_id;
+        $created_bookTa->save();
+        return $created_bookTa;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(books_tabl $books_tabl)
+    public function show($id)
     {
-        //
+        $book_Ta = BooksTabl::find($id);
+        return $book_Ta;
     }
 
     /**
@@ -59,7 +60,12 @@ class BooksTablController extends Controller
      */
     public function update(Request $request, books_tabl $books_tabl)
     {
-        //
+        $book_ta = books_tabl::find($request->id);
+        $book_ta->received_books_id = $request->received_books_id;
+        $book_ta->autor_id = $request->autor_id;
+        $book_ta->genre_id = $request->genre_id;
+        $book_ta->save();
+        return $book_ta;
     }
 
     /**

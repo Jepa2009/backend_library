@@ -30,19 +30,20 @@ class AutorsController extends Controller
      */
     public function store(Request $request)
     {
-        $created_catalog = new Autors;
-        $created_catalog->name = $request->name;
-        $created_catalog->save();
-        return $created_catalog;
+        $created_autor = new Autors;
+        $created_autor->name = $request->name;
+        $created_autor->save();
+        return $created_autor;
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(autors $autors)
+    public function show($id)
     {
-        //
+        $autor = Autors::find($id);
+        return $autor;
     }
 
     /**
@@ -56,9 +57,12 @@ class AutorsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, autors $autors)
+    public function update(Request $request, Autors $autors)
     {
-        //
+        $autor = Autors::find($request->id);
+        $autor->name = $request->name;
+        $autor->save();
+        return $autor;
     }
 
     /**

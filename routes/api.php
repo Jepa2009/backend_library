@@ -33,3 +33,59 @@ Route::get('/ReadersTicket',[ReadersTicketController::Class,'index']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('Autors')->group(function(){
+    Route::get('/',[AutorsController::Class,'index']);
+    Route::get('/{id}',[AutorsController::Class,'show']);
+    Route::post('/',[AutorsController::Class,'store']);
+    Route::delete('/{id}',[AutorsController::Class,'destroy']);
+    Route::put('/',[AutorsController::Class,'update']);
+});
+
+Route::prefix('Books')->group(function(){
+    Route::get('/',[BooksController::Class,'index']);
+    Route::get('/{id}',[BooksController::Class,'show']);
+    Route::post('/',[BooksController::Class,'store']);
+    Route::delete('/{id}',[BooksController::Class,'destroy']);
+    Route::put('/',[BooksController::Class,'update']);
+});
+
+Route::prefix('BooksReturn')->group(function(){
+    Route::get('/',[BooksReturnController::Class,'index']);
+    Route::get('/{id}',[BooksReturnController::Class,'show']);
+    Route::post('/',[BooksReturnController::Class,'store']);
+    Route::delete('/{id}',[BooksReturnController::Class,'destroy']);
+    Route::put('/',[BooksReturnController::Class,'update']);
+});
+
+Route::prefix('BooksTabl')->group(function(){
+    Route::get('/',[BooksTablController::Class,'index']);
+    Route::get('/{id}',[BooksTablController::Class,'show']);
+    Route::post('/',[BooksTablController::Class,'store']);
+    Route::delete('/{id}',[BooksTablController::Class,'destroy']);
+    Route::put('/',[BooksTablController::Class,'update']);
+});
+
+Route::prefix('BooksTableTwo')->group(function(){
+    Route::get('/',[BooksTableTwoController::Class,'index']);
+    Route::get('/{id}',[BooksTableTwoController::Class,'show']);
+    Route::post('/',[BooksTableTwoController::Class,'store']);
+    Route::delete('/{id}',[BooksTableTwoController::Class,'destroy']);
+    Route::put('/',[BooksTableTwoController::Class,'update']);
+});
+
+Route::prefix('Genre')->group(function(){
+    Route::get('/',[GenreController::Class,'index']);
+    Route::get('/{id}',[GenreController::Class,'show']);
+    Route::post('/',[GenreController::Class,'store']);
+    Route::delete('/{id}',[GenreController::Class,'destroy']);
+    Route::put('/',[GenreController::Class,'update']);
+});
+
+Route::prefix('Readers')->group(function(){
+    Route::get('/',[ReadersController::Class,'index']);
+    Route::get('/{id}',[ReadersController::Class,'show']);
+    Route::post('/',[ReadersController::Class,'store']);
+    Route::delete('/{id}',[ReadersController::Class,'destroy']);
+    Route::put('/',[ReadersController::Class,'update']);
+});

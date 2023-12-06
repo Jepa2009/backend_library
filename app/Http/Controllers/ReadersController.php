@@ -30,20 +30,21 @@ class ReadersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created_reader = new Readers;
+        $created_reader->name = $request->name;
+        $created_reader->address = $request->address;
+        $created_reader->number = $request->number;
+        $created_reader->save();
+        return $created_reader;
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(readers $readers)
+    public function show($id)
     {
-        $created_catalog = new Readers;
-        $created_catalog->name = $request->name;
-        $created_catalog->address = $request->address;
-        $created_catalog->number = $request->number;
-        $created_catalog->save();
-        return $created_catalog;
+        $read = Readers::find($id);
+        return $read;
     }
 
     /**
@@ -59,7 +60,12 @@ class ReadersController extends Controller
      */
     public function update(Request $request, readers $readers)
     {
-        //
+        $reader = readers::find($request->id);
+        $reader->name = $request->name;
+        $reader->address = $request->address;
+        $reader->number = $request->number;
+        $reader->save();
+        return $reader;
     }
 
     /**
